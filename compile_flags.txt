@@ -1,0 +1,3 @@
+-std=c17
+-isystem/nix/store/hh6y3s72d21whp6q98h4dh0valxiaw69-clang-wrapper-21.1.8/resource-root/include
+-isystem/nix/store/h0ip0h6qp7kc2wm7mwjaglkxxbzmjri4-glibc-2.42-51-dev/include
