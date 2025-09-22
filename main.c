@@ -1,4 +1,4 @@
-#include<unistd.h>
+#include<stdio.h>
 
 /*
  * building a http responses
@@ -8,10 +8,10 @@
  * null-terminated string
  * getting a string's length
  *
- *
- *
  */
 
 int main() {
-    write(1, "Hello, World!\n", 15);
+    char header[] = "HTTP/1.1 200 OK";
+    printf("Header: %s\n", header);
+    return 0;
 }
