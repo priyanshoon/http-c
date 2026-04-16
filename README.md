@@ -7,3 +7,4 @@ underthehood.
 # Reference
 - [http/1.1 rfc](https://datatracker.ietf.org/doc/html/rfc2119) 
 - [tcp server implementation in c](https://www.geeksforgeeks.org/c/tcp-server-client-implementation-in-c/)
+- [beej's guide to network programming](https://beej.us/guide/bgnet/html/split/)
