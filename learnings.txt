@@ -1,0 +1,48 @@
+IP Addresses
+
+IP Addresses are nothing but the locations of IP in network routing system.
+It contains 4 bytes (aka. four octets), and was commonly written in "dots and numbers".
+example = 178.42.72.3
+
+There are also two types of IP addresses
+1. IPv4 (internet protocol version 4)
+2. IPv6 (internet protocol version 6)
+
+the example we just show is a of IPv4
+
+IPv6 : 2001:0db8:c9d2:aee5:73e3:934a:a5ae:9551
+we can also write it for shorthand like 
+
+2001:0db8:c9d2:0012:0000:0000:0000:0051
+-> shorthand for 
+-> 2001:db8:c9d2:12::51
+
+you see we eliminate all the leading zeros
+
+Subnets
+
+the wikipedia defination of subnet is -
+A subnet is a logical subdivision of an IP network. The practice of dividing the network
+into two or more networks is called subnetting.
+
+for instance in IPv4 192.0.2.12 we could say that first 3 bytes are the network 
+    and last byte was the host. That means there is a host 12 on network 192.0.2.0
+
+
+Port 
+
+Huh... everyone know what is port, what's the point. But still what I don't knew is
+port is attached to header of tcp and udp.
+
+
+Byte order
+
+Endianess... TCP and UDP are the protocol that uses big-endian (most significant bits at first)
+
+Function	Description
+htons()	    host to network short
+htonl()	    host to network long
+ntohs()	    network to host short
+ntohl()	    network to host long
+
+these are some functions used to convert the bytes as needed

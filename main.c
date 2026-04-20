@@ -48,3 +48,11 @@ int main(void) {
 
     return 0;
 }
+
+/*
+  Function	Description
+    - htons()	host to network short
+    - htonl()	host to network long
+    - ntohs()	network to host short
+    - ntohl()	network to host long
+ */
