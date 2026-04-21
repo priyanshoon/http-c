@@ -11,6 +11,8 @@
 int main(void) {
     int server, client;
     struct sockaddr_in address;
+    memset(&address, 0, sizeof(address));
+
     int addrlen = sizeof(address);
     char buffer[BUFFER_SIZE] = {0};
 
@@ -37,7 +39,8 @@ int main(void) {
 
     client = accept(server, (struct sockaddr*)&address, (socklen_t*)&addrlen);
 
-    read(client, buffer, 1024);
+    int byte_read = read(client, buffer, 1024);
+    printf("total bytes read: %d\n", byte_read);
     printf("Client says : %s\n", buffer);
 
     char *msg = "hello from server!\n";

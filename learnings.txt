@@ -46,3 +46,74 @@ ntohs()	    network to host short
 ntohl()	    network to host long
 
 these are some functions used to convert the bytes as needed
+
+Struct's
+
+socket is of type `int`
+there is a struct name addrinfo - 
+
+struct addrinfo {
+    int              ai_flags;     // AI_PASSIVE, AI_CANONNAME, etc.
+    int              ai_family;    // AF_INET, AF_INET6, AF_UNSPEC
+    int              ai_socktype;  // SOCK_STREAM, SOCK_DGRAM
+    int              ai_protocol;  // use 0 for "any"
+    size_t           ai_addrlen;   // size of ai_addr in bytes
+    struct sockaddr *ai_addr;      // struct sockaddr_in or _in6
+    char            *ai_canonname; // full canonical hostname
+
+    struct addrinfo *ai_next;      // linked list, next node
+};
+
+here ai prefix is addrinfo
+
+then there is sockaddr (socket address) struct 
+
+struct sockaddr {
+    unsigned short sa_family; // address family, AF_xxx
+    char           sa_data[14]; // 14 bytes of protocol address
+}
+
+struct sockaddr is protocol agonostic, this is a generic structure used by socket 
+apis so they can handle any type of address (ipv4, ipv6, unix domain, etc)
+
+- Acts like a base/abstract type
+- Used in function signatures like bind(), connect(), accept()
+- You usually don’t fill this directly
+- sa_data is kind of a blob — not convenient to use
+
+focus on 3rd point, we do not want to pack address in the sa_data, that could change the byte order or 
+undefined behavior, or who knows what. To tackel this programmer came with
+
+struct sockaddr_in! in here is refers to internet
+
+struct sockaddr_in {
+    short int          sin_family;  // Address family, AF_INET
+    unsigned short int sin_port;    // Port number
+    struct in_addr     sin_addr;    // Internet address
+    unsigned char      sin_zero[8]; // Same size as struct sockaddr
+
+}
+
+this is specialized structure for ipv4 addresses.
+
+- Designed specifically for IPv4
+- Fields are meaningful and easy to use:
+    - sin_port → port number
+    - sin_addr → IP address
+- Much more user-friendly
+
+now there is struct sockaddr_storage
+
+struct sockaddr_storage {
+    sa_family_t  ss_family;     // address family
+
+    // all this is padding, implementation specific, ignore it:
+    char      __ss_pad1[_SS_PAD1SIZE];
+    int64_t   __ss_align;
+    char      __ss_pad2[_SS_PAD2SIZE];
+}
+
+This can be used if you don't know what type of address you are dealing with in compile time.
+Meaning it has a capability to store ipv4 and ipv6 both of the address
+
+
